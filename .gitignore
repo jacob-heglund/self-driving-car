@@ -1,0 +1,6 @@
+# Data
+simulators/
+test_videos/
+output_videos/
+
+.vscode/

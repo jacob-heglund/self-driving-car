@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
+\geometry{letterpaper}
+\usepackage[parfill]{parskip} % skip line instead of indent for new paragraphs
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{times}
+\usepackage{listings}
+\usepackage{gensymb}
+
+\title{AE 598 - Project Proposal}
+\author{Jacob Heglund - jheglun2}
+\date{March 6, 2019}
+
+\begin{document}
+\maketitle
+
+\section{Motivation}
+% Why are you doing this work?  Why is it worth the time you will put in to it?
+% self driving cars are being developed and have the potential to change entire industries
+The earliest example of autonomous technology in a vehicle sold to the general public is LIDAR-based adaptive cruise control, which was first introduced for consumer vehicles in the mid-1990's.  Since then there have been many developments including automatic collision avoidance, which is quickly becoming a standard feature in modern cars, and Tesla's "Autopilot" feature, which is currently operating in general highway-driving scenarios.  The development of early autonomous road-going technologies was largely the result of investments by automobile manufacturers, but in the modern era autonomous technologies are the result of competition between automobile manufacturers and Silicon Valley-based technology companies.  The scope of autonomous technologies is quickly increasing, allowing the possibility for the deployment of a fully autonomous, road-going vehicle in the next 25 years.
+
+% why do I care about looking at autonomous road-vehicle in this project
+% I'm interested in exploring several modern techniques that are implemented on self-driving cars
+There is clearly a great deal of interest from both industry and academia in developing autonomous technologies.  My advisor, Dr. Girish Chowdhary, is researching the use of autonomous vehicles in the agricultural context, so the topic of autonomy is often on my mind.  However, I have not yet had the opportunity to thoroughly review the algorithms that allow autonomous-vehicle operation.  Therefore, I would like to use this project to review and implement modern techniques and algorithms used for autonomous road-vehicles.
+
+\section{Problem Statement}
+% What is the specific problem you want to solve?
+% What goal are you going to achieve?
+The task of developing a fully autonomous vehicle is a subject of interest for both industry and academia.  Given that the scope of this project may quickly grow out of proportion, I will set several goals I hope to achieve. Each goal will act toward building some of the necessary components for an autonomous vehicle to operate in real-world driving conditions.
+
+\subsection*{Goal 0 - Navigation}
+Implement a simulated autonomous car that is able to navigate an environment with no obstacles.  This is the simplest task, and will act as a benchmark for future navigation tasks.  Accomplishing this goal requires the successful navigation of a road course.
+
+\subsection*{Goal 1 - Navigation with Road Signs}
+Implement a simulated autonomous car that is able to navigate an environment in accordance with local traffic laws as represented by road signs.  The road signs must be detected by the vehicle, and the vehicle must act according to the signs so that it continues to operate legally.  Accomplishing this goal requires the successful navigation of a road course while operating in accordance with local speed limits and obeying stop signs.
+
+\subsection*{Goal 2 - Obstacle Detection}
+Implement a system that is able to detect simple obstacles in the vicinity of the vehicle.  This goal will be accomplished when a system is implemented that gives a low rate of false-negative obstacle predictions.
+
+\subsection*{Goal 3 - Navigation and Obstacle Avoidance}
+This is a stretch goal, and involves the successful combination of the results of Goals 1 and 2 in a single autonomous vehicle.  This goal will be accomplished when a vehicle is able to navigate a road course while identifying and reacting appropriately for potential obstacles.
+
+\section{Approach}
+% Specifically how will you accomplish your goal?
+% Topics to potentially include:
+% block diagram of proposed architecture
+% algorithms that will be used
+% experimental validation
+% algorithms that will be used
+
+I will use a combination of simulated GPS, INS, and vision sensors to accomplish the stated goals.  Navigation and path-planning have been studied by many research groups, and solving these problems is difficult in general.  I will be solving the navigation problem for a few simple scenarios.  As a first step in solving the navigation problem, I will develop a simple dynamical model for the vehicle, as well as a measurement model for combining measurements from the available sensors.  I will then use techniques such as Kalman filtering to provide accurate position estimates of the vehicle.  The navigation portion of the vehicle will be successful when it is able to reach successive waypoints autonomously.
+
+One of the key areas I want to focus on is the implementation of vision-based algorithms for autonomous navigation.  Vision-based systems are vital to the operation of autonomous vehicles on public roads because they provide the vehicle with non-local information, such as the position and motion of potential obstacles.  I will use the vehicle's vision system for solving the road sign detection problem, the obstacle detection problem, and the navigation problem.  Several techniques and algorithms that will work toward this goal include optical flow, YOLO, and Faster R-CNN.  Since there are many vision-based algorithms that may be used for autonomous driving, I will also be conducting a literature review of modern techniques in vision-based driving before implementing any algorithms.
+
+\section{Request for Resources}
+I will be using V-Rep as a simulator, and there are several freely available car models and environments that can be used to provide a testbed vehicle and testing environment.  I will be using the V-Rep Remote API for Python to send commands and receive data from the vehicle.  The goals I propose will not require any additional resources, however a future extension of this work would involve implementing the autonomous system on a real vehicle for real-world validation.
+
+\end{document}
